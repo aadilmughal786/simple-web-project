@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KeyCode</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+  <style>
+    
+  </style>
+</head>
+<body class="bg-light">
+    <div class="container">
+      <div class="row align-items-center vh-100 justify-content-center">
+        <div class="col col-sm-10 col-md-8 col-lg-6">
+          <div class="card">
+            <h6 class="card-header text-center"><i class="fa-solid fa-keyboard"></i>
+            Key Code Detection
+            </h6>
+
+            <div class="card-body">
+              <h1 id="key-code" class="text-muted text-center">Key code display here</h1>
+              <p id="ts" class="mb-0 text-center text-muted">Time Stamp display here</p>
+            </div>
+
+            <div id="key-value" class="card-footer">
+              <p class="text-muted text-center mb-0">key display here</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  <script>
+
+    window.onkeydown = function (e) {
+        return false;
+    }
+
+    window.addEventListener('keydown', function(e){
+      let ts = e.timeStamp;
+      let extraKey = "";
+      let keyCodeStr = "";
+      if(e.ctrlKey==true && e.key!="Control"){
+        extraKey+= `<span class="badge bg-secondary">Ctrl</span> + `;
+        keyCodeStr +="17 + ";
+      }
+      if(e.altKey==true && e.key!="Alt"){
+        extraKey+= ` <span class="badge bg-secondary">Alt</span> + `;
+        keyCodeStr +="18 + ";
+      }
+      if(e.shiftKey==true && e.key!="Shift"){
+        extraKey+= ` <span class="badge bg-secondary">Shift</span> + `;
+        keyCodeStr +="16 + ";
+      }
+
+      if(e.keyCode==32)
+        extraKey += ` <span class="badge bg-secondary">Space</span>`;
+      else
+        extraKey += ` <span class="badge bg-secondary">${e.key}</span>`;
+
+      document.getElementById('key-code').innerHTML = `<h1 id="key-code" class="text-center">${keyCodeStr} ${e.keyCode}</h1>`;
+
+      document.getElementById('ts').innerHTML = `<p id="ts" class="text-center mb-0 text-muted">${ts}</p>`;
+
+      document.getElementById('key-value').innerHTML = `<p class="text-muted text-center mb-0">key pressed : ${extraKey}</p>`;
+
+      console.log(e);
+    })
+  </script>
+</body>
+</html>

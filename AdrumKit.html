@@ -72,11 +72,11 @@
       }
 
       p {
-        margin-bottom: 35px;
+        /* margin-bottom: 35px; */
         font-family: "Mali", cursive;
         font-size: 15px;
         position: absolute;
-        bottom: 5px;
+        bottom: 15px;
       }
 
       span {
@@ -153,6 +153,25 @@
           }, 100);
         }
       }
+
+      let keys = document.querySelectorAll(".key");
+      keys.forEach(key => key.addEventListener('click',function(){
+        let kc = key.dataset.key;
+        let elem = document.querySelector(`div[data-key="${kc}"]`);
+        let audio_elem = document.querySelector(`audio[data-key="${kc}"]`);
+        let pp = document.querySelector("p");
+
+        if (audio_elem) {
+          audio_elem.currentTime = 0;
+          audio_elem.play();
+          elem.classList.add("playing");
+          setTimeout(() => {
+            elem.classList.remove("playing");
+          }, 100);
+        }
+      }));
+
+      // object.addEventListener("click", myScript);
 
       window.addEventListener("keyup",play);
     </script>

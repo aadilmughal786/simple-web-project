@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap" rel="stylesheet">
+
+  <title>AClock</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url("./dclock/don.png");
+      background-attachment: center;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .clock-face{
+      width: 250px;
+      height: 250px;
+      background: url("./dclock/clock.svg") no-repeat center center;
+      position: relative;
+    }
+
+
+    .hand{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: 100% 50%;
+      transform-origin: 0% 50%;
+    }
+
+    .second-hand{
+      width: 39%;
+      height: 3px;
+      background-color: black;
+      border-radius: 3px;
+    }
+
+    .min-hand{
+      width: 32%;
+      height: 4px;
+      background-color: green;
+      border-radius: 4px;
+    }
+
+    .hour-hand{
+      width: 25%;
+      height: 6px;
+      background-color: #ff0f5e;
+      border-radius: 6px;
+    }
+
+    .mid{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: black;
+      z-index: 1000;
+      translate: -50% -50%;
+    }
+
+    .name{
+      font-family: 'Signika Negative', sans-serif;
+      position: absolute;
+      top: 58%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: -1000;
+    }
+
+    .time2{
+      font-family: 'Signika Negative', sans-serif;
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: -1000;
+    }
+
+    .glassy-text {
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #333;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+      }
+      @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+        .glassy-text {
+          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+          background-color: rgba(255, 255, 255, 0.4);
+        }
+
+  </style>
+</head>
+<body>
+      <div class="glassy-text">
+        <div class="clock-face">
+          <div class="hand hour-hand"></div>
+          <div class="hand min-hand"></div>
+          <div class="hand second-hand"></div>
+          <div class="mid"></div>
+         <div class="name">Aadil Mugal</div>
+          <div class="time2">time</div>
+        </div>
+      </div>
+
+    <script>
+    const secondHand = document.querySelector('.second-hand');
+    const minsHand = document.querySelector('.min-hand');
+    const hourHand = document.querySelector('.hour-hand');
+    const time = document.querySelector('.time2');
+
+    function setDate() {
+      const now = new Date();
+
+      const seconds = now.getSeconds();
+      const secondsDegrees = seconds*(360/60);
+      secondHand.style.transform = `rotate(${secondsDegrees - 90}deg)`;
+
+      const mins = now.getMinutes();
+      const minsDegrees = mins*(360/60) + seconds*(360/60)*(1/60);
+      minsHand.style.transform = `rotate(${minsDegrees - 90}deg)`;
+
+      const hour = now.getHours();
+      const hourDegrees = hour*(360/12) + mins*(360/12)*(1/60) + seconds*(360/12)*(1/60)*(1/60);
+      hourHand.style.transform = `rotate(${hourDegrees - 90}deg)`;
+      let t = `${hour<10?`0${hour}`:hour}:${mins<10?`0${mins}`:mins}:${seconds<10?`0${seconds}`:seconds}`;
+      time.innerText = t;
+    }
+    setDate();
+    setInterval(setDate,1000);
+    </script>
+
+</body>
+</html>

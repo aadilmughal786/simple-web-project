@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css var with Js</title>
+    <style>
+
+        :root{
+            --spacing:10px;
+            --blur:10px;
+            --base:#ffc600;
+        }
+
+        body{
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: monospace;
+        }
+
+        .control{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+            /* flex-direction: column; */
+        }
+        *{
+            text-align: center;
+        }
+
+        .don{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        img{
+            max-width: 70%;
+            padding: var(--spacing);
+            background-color: var(--base);
+            filter: blur(var(--blur));
+        }
+
+        p{
+            text-align: center;
+        }
+        span{
+            color: var(--base);
+        }
+        .name{
+            background-color: var(--base);
+            color: black;
+            padding: 4px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1><span>Up</span>date CS<span>S Vari</span>ables w<span>i</span>th <span>J</span>ava<span>S</span>cript</h1>
+    <div class="control">
+        <div class="don">
+            <label for="spacing">Spacing</label>
+            <input type="range" min="0" max="25" value="5" data-sizing="px" name="spacing">
+        </div>
+        <div class="don">
+            <label for="blur">Blur</label>
+            <input type="range" min="0" max="10" value="0" data-sizing="px" name="blur">
+        </div>
+        <div class="don">
+            <label for="base">Base Color</label>
+            <input type="color" value="#ffc600" name="base">
+        </div>
+    </div>
+
+    <img src="./cssvar/ccsjs.jpg" alt="Yevhenii Ometsynskyi">
+
+    <p>Made By <span class="name">Aadil Mugal</span></p>
+    
+    <script>
+
+        let inputs = document.querySelectorAll("input");
+
+
+        function handler(){
+
+            let suffix = this.dataset.sizing || "";
+            // console.log(suffix);
+            document.documentElement.style.setProperty(`--${this.name}`,`${this.value}`+suffix);
+
+        //     if(this.name == "spacing") 
+        //     if(this.name == "blur")
+        //     if(this.name == "base")
+        }
+
+        inputs.forEach(input => input.addEventListener("change",handler));
+        inputs.forEach(input => input.addEventListener("mousemove",handler));
+
+    </script>
+
+</body>
+</html>

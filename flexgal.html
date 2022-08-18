@@ -130,7 +130,15 @@
       elem.forEach((i) =>
         i.addEventListener("click", function () {
           this.classList.toggle("open");
-          this.classList.toggle("active");
+        })
+      );
+
+      elem.forEach((i) =>
+        i.addEventListener("transitionend", function (e) {
+          //   this.classList.toggle("active");
+          if (e.propertyName.includes("flex")) {
+            this.classList.toggle("active");
+          }
         })
       );
     </script>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clip Path CSS</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: monospace;
+        height: 100vh;
+        overflow: hidden;
+        background-color: #fdbf0465;
+        font-size: 1.2rem;
+      }
+
+      .container {
+        width: 440px;
+        /* background-color: white; */
+        border-radius: 10px;
+      }
+
+      .inner {
+        padding: 2rem;
+        background-color: #fd5f51;
+        border-radius: inherit;
+        color: white;
+        clip-path: circle(10% at 91% 22%);
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
+      }
+
+      .inner:hover {
+        clip-path: circle(75%);
+        background-color: #38c76a;
+      }
+
+      .inner:hover span {
+        color: #38c76a;
+      }
+
+      h1 {
+        margin: 0;
+      }
+
+      p {
+        font-weight: 500;
+      }
+
+      span {
+        float: right;
+        padding-right: 1px;
+        /* transition: all 0.006s; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="inner">
+        <span>A</span>
+        <h1>Hi,</h1>
+        <p>my name is Aadil Mugal I am a full-stack web devloper</p>
+      </div>
+    </div>
+  </body>
+</html>

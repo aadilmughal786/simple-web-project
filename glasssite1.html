@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glassy Games Window</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/4d1a4ed267.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+      }
+
+      h1 {
+        color: #426696;
+        font-weight: 600;
+        opacity: 0.8;
+      }
+
+      h2 {
+        color: #426696;
+        opacity: 0.8;
+        font-weight: 500;
+        font-size: 20px;
+      }
+
+      p {
+        color: #426696;
+        opacity: 0.7;
+        font-weight: 300;
+      }
+      section {
+        height: 535px;
+        width: 800px;
+        background: linear-gradient(
+          to right bottom,
+          rgba(255, 255, 255, 0.7),
+          rgba(255, 255, 255, 0.3)
+        );
+        border-radius: 10px;
+        backdrop-filter: blur(20px);
+        z-index: 3;
+        display: flex;
+        overflow: hidden;
+      }
+
+      .c1,
+      .c2 {
+        background: linear-gradient(
+          to right bottom,
+          rgba(255, 255, 255, 1),
+          rgba(255, 255, 255, 0.5)
+        );
+        height: 10rem;
+        width: 10rem;
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .c1 {
+        top: 2vh;
+        right: 35vh;
+      }
+
+      .c2 {
+        top: 74vh;
+        left: 30vh;
+      }
+      .dashboard {
+        display: flex;
+        width: 230px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        height: 100%;
+        border-radius: 10px;
+        background: linear-gradient(
+          to right top,
+          rgba(255, 255, 255, 0.7),
+          rgba(255, 255, 255, 0.3)
+        );
+      }
+
+      .user > a > img {
+        width: 65px;
+        border-radius: 50%;
+        margin-bottom: 8px;
+        cursor: pointer;
+      }
+
+      .user {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+        margin-top: 20px;
+      }
+
+      .user > h2 {
+        letter-spacing: 1px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .user > p {
+        letter-spacing: 1px;
+        font-size: 12px;
+      }
+
+      .link {
+        display: flex;
+        /* align-items: center; */
+        gap: 1.5rem;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 10px;
+        align-items: center;
+      }
+
+      .links {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .link:hover {
+        background: linear-gradient(
+          to right top,
+          rgba(255, 255, 255, 0.7),
+          rgba(255, 255, 255, 0.5)
+        );
+      }
+
+      .link > img {
+        width: 1.3rem;
+        height: 1.3rem;
+      }
+
+      .link > h2 {
+        font-size: 16px;
+      }
+
+      .procard {
+        position: relative;
+        border-radius: 10px;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        margin-bottom: 20px;
+        background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+        box-shadow: 2px 2px 2px rgba(122, 122, 122, 0.2);
+      }
+
+      .procard > img {
+        position: absolute;
+        width: 60px;
+        bottom: -5px;
+        right: 25px;
+      }
+      .procard > h2 {
+        font-size: 18px;
+        color: white;
+        padding-bottom: 15px;
+        font-weight: 800;
+      }
+
+      .games {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 50px;
+        height: 100%;
+      }
+
+      .card {
+        display: flex;
+        margin-bottom: 20px;
+        gap: 20px;
+        align-items: center;
+        padding: 15px;
+        position: relative;
+        border-radius: 10px;
+        background: linear-gradient(
+          to left top,
+          rgba(255, 255, 255, 0.7),
+          rgba(255, 255, 255, 0.5)
+        );
+        box-shadow: 4px 4px 4px rgba(122, 122, 122, 0.2);
+      }
+
+      .card > img {
+        width: 70px;
+      }
+      .card-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+      .card-info > p {
+        font-size: 12px;
+      }
+
+      .status {
+        margin-bottom: 10px;
+        margin-top: 20px;
+      }
+
+      .status > h1 {
+        margin-bottom: 12px;
+        font-weight: bolder;
+      }
+
+      .status > input {
+        border: none;
+        padding: 5px 20px;
+        background: linear-gradient(
+          to right top,
+          rgba(255, 255, 255, 0.7),
+          rgba(255, 255, 255, 0.5)
+        );
+        border-radius: 10px;
+        outline: none;
+        width: 50%;
+      }
+
+      .percentage {
+        font-size: 15px;
+        font-weight: 600;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        color: #1cc3dd;
+      }
+
+      .windowbtn {
+        position: absolute;
+        display: flex;
+        gap: 15px;
+        padding: 5px;
+        right: 20px;
+        top: 15px;
+      }
+      .windowbtn > div {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .w1 {
+        background-color: #fdbe04;
+      }
+
+      .w2 {
+        background-color: #38c76a;
+      }
+
+      .w3 {
+        background-color: #fd5f51;
+      }
+
+      .progress {
+        margin-top: 2px;
+        /* background: linear-gradient(to left top, #65dfc9, #6cdbeb); */
+        background-color: #65dfc930;
+        height: 8px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .pvalue {
+        height: 8px;
+        background: linear-gradient(to left top, #65dfc9, #6cdbeb);
+        border-radius: 10px;
+      }
+
+      .p1 {
+        width: 60%;
+      }
+      .p2 {
+        width: 48%;
+      }
+      .p3 {
+        width: 72%;
+      }
+    </style>
+  </head>
+  <body>
+    <section data-tilt>
+      <div class="dashboard">
+        <div class="user">
+          <a
+            target="_blank"
+            href="https://aadilmughal786.github.io/My_web_resume/"
+            ><img src="./glass_site1/profile.png" alt="user pics"
+          /></a>
+          <h2>Aadil Mugal</h2>
+          <p>Pro Coder</p>
+        </div>
+        <div class="links">
+          <div class="link">
+            <img src="./glass_site1/twitch.png" alt="twitch" />
+            <h2>Streams</h2>
+          </div>
+          <div class="link">
+            <img src="./glass_site1/steam.png" alt="steam" />
+            <h2>Games</h2>
+          </div>
+          <div class="link">
+            <img src="./glass_site1/upcoming.png" alt="upcoming" />
+            <h2>New</h2>
+          </div>
+          <div class="link">
+            <img src="./glass_site1/library.png" alt="library" />
+            <h2>Library</h2>
+          </div>
+        </div>
+        <div class="procard">
+          <h2>Join Pro for free games</h2>
+          <img src="./glass_site1/controller.png" alt="controller" />
+        </div>
+      </div>
+      <div class="games">
+        <div class="status">
+          <h1>Recent games</h1>
+          <input type="text" />
+        </div>
+        <div class="cards">
+          <div class="card">
+            <img src="./glass_site1/assassins.png" alt="assassins" />
+            <div class="card-info">
+              <h2>Assassins Creed valhalla</h2>
+              <p>PS5 version</p>
+              <div class="progress">
+                <div class="pvalue p1"></div>
+              </div>
+              <h2 class="percentage">60%</h2>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./glass_site1/sackboy.png" alt="assassins" />
+            <div class="card-info">
+              <h2>Sackboy A Great Advanture</h2>
+              <p>PS5 version</p>
+              <div class="progress">
+                <div class="pvalue p2"></div>
+              </div>
+              <h2 class="percentage">48%</h2>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./glass_site1/spiderman.png" alt="assassins" />
+            <div class="card-info">
+              <h2>Spidermon Miles Morales</h2>
+              <p>PS5 version</p>
+              <div class="progress">
+                <div class="pvalue p3"></div>
+              </div>
+              <h2 class="percentage">72%</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="windowbtn">
+        <div class="w1"></div>
+        <div class="w2"></div>
+        <div class="w3"></div>
+      </div>
+    </section>
+    <div class="c1"></div>
+    <div class="c2"></div>
+    <script src="./glass-card-img/vanilla-tilt.js"></script>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glassy Login</title>
+    <script
+      src="https://kit.fontawesome.com/4d1a4ed267.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Poppins", sans-serif;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgb(238, 174, 202);
+        background: radial-gradient(
+          circle,
+          rgba(238, 174, 202, 1) 0%,
+          rgba(148, 187, 233, 1) 100%
+        );
+        animation: animate 30s linear infinite;
+      }
+
+      @keyframes animate {
+        0% {
+          filter: hue-rotate(0deg);
+        }
+        100% {
+          filter: hue-rotate(360deg);
+        }
+      }
+
+      .box {
+        position: relative;
+        padding: 5px;
+        width: 360px;
+        height: 480px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        box-shadow: 0 5px 35px rgba(0, 0, 0, 0.2);
+      }
+      .form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+        padding: 20px;
+      }
+
+      .form > h2 {
+        font-weight: 600;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+      }
+
+      .form .inputBx {
+        margin-bottom: 30px;
+        width: 100%;
+        position: relative;
+      }
+      .inputBx > input {
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        padding: 5px 5px 5px 30px;
+        background: transparent;
+        box-shadow: inset rgba(0, 0, 0, 0.4);
+        font-size: 14px;
+      }
+
+      .inputBx > input:focus {
+        outline: 1px solid rgb(238, 174, 202);
+      }
+      .inputBx > i {
+        position: absolute;
+        left: 9px;
+        top: 8px;
+        transform: scale(0.8);
+      }
+      .remember {
+        display: flex;
+        gap: 5px;
+        cursor: pointer;
+        width: max-content;
+        margin-bottom: 10px;
+      }
+      input[type="checkbox"] {
+        accent-color: rgba(238, 174, 202, 1);
+      }
+      input[type="submit"] {
+        background: rgba(238, 174, 202, 0.4);
+        transition: background 0.3s ease-in-out;
+        letter-spacing: 1px;
+      }
+      input[type="submit"]:hover {
+        background: rgba(238, 174, 202, 0.8);
+      }
+
+      p {
+        margin: 5px;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="box">
+        <div class="form">
+          <h2>Login</h2>
+          <form action="">
+            <div class="inputBx">
+              <input type="text" placeholder="Username" />
+              <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+            <div class="inputBx">
+              <input type="password" placeholder="Password" />
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            </div>
+            <label for="" class="remember">
+              <input type="checkbox" checked />
+              Remember Me
+            </label>
+            <div class="inputBx">
+              <input style="padding-left: 5px" type="submit" value="Login" />
+            </div>
+          </form>
+          <p>Forget <a href="#">Password</a></p>
+          <p>Need an <a href="#">Account</a></p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

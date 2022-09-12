@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dinosaur game</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: monospace;
+        letter-spacing: 1px;
+        overflow: hidden;
+      }
+
+      .game {
+        width: 100%;
+        height: 200px;
+        border-bottom: 2px solid black;
+        position: relative;
+      }
+
+      .dino {
+        width: 70px;
+        height: 70px;
+        background-image: url("./dinosour_game/dinosaur.png");
+        background-size: auto 70px;
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+      }
+
+      .jump {
+        animation: jump 0.5s linear;
+      }
+
+      @keyframes jump {
+        0% {
+          bottom: 40px;
+        }
+        30% {
+          bottom: 90px;
+        }
+
+        50% {
+          bottom: 120px;
+        }
+
+        80% {
+          bottom: 90px;
+        }
+        100% {
+          bottom: 40px;
+        }
+      }
+
+      .cactus {
+        width: 20px;
+        height: 40px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-image: url("./dinosour_game/cactus.png");
+        background-size: 20px 40px;
+        animation: cactus 1.5s infinite linear;
+      }
+
+      @keyframes cactus {
+        0% {
+          left: 100vw;
+        }
+        100% {
+          left: -10px;
+        }
+      }
+
+      h2 {
+        margin-top: 80px;
+        margin-bottom: 5px;
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+      p {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>press any key to jump</h2>
+    <p>Aadil Mugal</p>
+    <p>
+      Highest score : <span id="hscore">0</span> | Current score :
+      <span id="cscore">0</span>
+    </p>
+    <div class="game">
+      <div class="dino"></div>
+      <div class="cactus"></div>
+    </div>
+    <script>
+      let hscore = document.getElementById("hscore");
+      let cscore = document.getElementById("cscore");
+      flag = false;
+      if (localStorage.getItem("hscore")) {
+        hscore.innerHTML = localStorage.getItem("hscore");
+      }
+      alert("Best of luck");
+      const dino = document.getElementsByClassName("dino")[0];
+      const cactus = document.getElementsByClassName("cactus")[0];
+
+      function jump() {
+        if (dispatchEvent.classlist != "jump") {
+          dino.classList.add("jump");
+          setTimeout(function () {
+            dino.classList.remove("jump");
+          }, 300);
+        }
+      }
+
+      setInterval(function () {
+        let dinoBottom = parseInt(
+          window.getComputedStyle(dino).getPropertyValue("bottom")
+        );
+
+        let cactusLeft = parseInt(
+          window.getComputedStyle(cactus).getPropertyValue("left")
+        );
+        if (cactusLeft > 20 && cactusLeft < 85 && dinoBottom < 40) {
+          cactus.style.animationPlayState = "paused";
+          dino.style.animationPlayState = "paused";
+          alert("Whoops Game Over!");
+          dino.style.animationPlayState = "running";
+          cactus.style.animationPlayState = "running";
+          flag = true;
+        }
+      }, 10);
+
+      setInterval(function () {
+        let a = parseInt(hscore.innerHTML);
+        let b = parseInt(cscore.innerHTML);
+        b++;
+        if (flag) {
+          b = 0;
+          flag = false;
+        }
+        cscore.innerHTML = b;
+        if (b > a) {
+          a = b;
+          hscore.innerHTML = a;
+        }
+
+        localStorage.setItem("hscore", a);
+      }, 1500);
+
+      document.addEventListener("keydown", function (e) {
+        jump();
+      });
+      window.addEventListener("click", function (e) {
+        jump();
+      });
+    </script>
+  </body>
+</html>

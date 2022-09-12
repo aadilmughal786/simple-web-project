@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Img filters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        background: rgb(238, 174, 202);
+        background: radial-gradient(
+          circle,
+          rgba(238, 174, 202, 0.8575805322128851) 0%,
+          rgba(148, 187, 233, 0.8295693277310925) 100%
+        );
+      }
+      .main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        overflow: hidden;
+      }
+      #img {
+        width: 300px;
+        border-radius: 20px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 0px;
+      }
+
+      button {
+        background-color: rgba(148, 187, 233, 0.8295693277310925);
+        width: 100%;
+        cursor: pointer;
+        border: 1px;
+        padding: 10px;
+        text-align: center;
+        text-transform: uppercase;
+        color: black;
+        border-radius: 5px;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      #select {
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: black;
+        width: 100%;
+        background-color: rgba(148, 187, 233, 0.8295693277310925);
+        cursor: pointer;
+        border: none;
+        outline: none;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+
+      .select_arrow {
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        width: 0px;
+        height: 0px;
+        border: solid black;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+      .don {
+        position: relative;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <h1 style="font-family: monospace; font-weight: 300; letter-spacing: 1px">
+        IMAGE
+        <a href="https://aadilmughal786.github.io/My_web_resume/">FILTERS</a>
+      </h1>
+      <img id="img" src="./img-filters/man.png" alt="man photo" />
+      <div class="don">
+        <select id="select" onchange="changeFilter()">
+          <option value="">SELECT FILTER</option>
+          <option value="grayscale_100">Gray</option>
+          <option value="brightness_0">Brightness 0%</option>
+          <option value="brightness_50">Brightness 50%</option>
+          <option value="brightness_100">Brightness 100%</option>
+          <option value="blur_0">No blur</option>
+          <option value="blur_5">Blur 5px</option>
+          <option value="opacity_0">Opacity 0%</option>
+          <option value="opacity_30">Opacity 50%</option>
+        </select>
+        <div class="select_arrow"></div>
+      </div>
+      <button onclick="reset()">Reset</button>
+    </div>
+    <script>
+      function changeFilter() {
+        const fvalue = document.getElementById("select").value;
+        const filterArr = fvalue.split("_");
+        const unit = filterArr[0] == "blur" ? "px" : "%";
+        document.getElementById(
+          "img"
+        ).style.webkitFilter = `${filterArr[0]}(${filterArr[1]}${unit})`;
+      }
+
+      function reset() {
+        document.getElementById("img").style.webkitFilter = "";
+      }
+    </script>
+  </body>
+</html>

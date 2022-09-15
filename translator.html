@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/4d1a4ed267.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./languageTranslator/style.css" />
+    <title>Language Translator</title>
+  </head>
+
+  <body>
+    <div class="container" data-tilt>
+      <div class="windowbtn">
+        <div class="w1"></div>
+        <div class="w2"></div>
+        <div class="w3"></div>
+      </div>
+      <p class="header">
+        <i class="fa-solid fa-language"></i>
+        <span>Translator</span>
+      </p>
+      <div class="wrapper">
+        <div class="text-input">
+          <textarea placeholder="Write Text.." class="from-text"></textarea>
+          <textarea
+            placeholder="Translated text here.."
+            readonly
+            disabled
+            class="to-text"
+          ></textarea>
+        </div>
+        <ul class="controls">
+          <li class="row from">
+            <div class="icons">
+              <i id="from" class="fa fa-volume-up" aria-hidden="true"></i>
+              <i id="from" class="fa fa-copy" aria-hidden="true"></i>
+            </div>
+            <select></select>
+          </li>
+          <li class="exchange">
+            <i class="fa fa-exchange" aria-hidden="true"></i>
+          </li>
+          <li class="row to">
+            <div class="icons">
+              <i class="fa fa-volume-up" aria-hidden="true"></i>
+              <i class="fa fa-copy" aria-hidden="true"></i>
+            </div>
+            <select></select>
+          </li>
+        </ul>
+      </div>
+      <button>Translate text</button>
+      <p class="dev">
+        Made by
+        <a href="https://github.com/aadilmughal786" target="_blank"
+          >Aadil Mugal</a
+        >
+        made with
+        <i
+          style="color: rgba(255, 0, 0, 0.719)"
+          class="fa fa-heart"
+          aria-hidden="true"
+        ></i>
+      </p>
+    </div>
+    <div class="c1"></div>
+    <div class="c2"></div>
+    <script src="./languageTranslator/countries.js"></script>
+    <script src="./languageTranslator/script.js"></script>
+    <script src="./glass-card-img/vanilla-tilt.js"></script>
+  </body>
+</html>

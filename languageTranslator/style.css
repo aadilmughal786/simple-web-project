@@ -256,9 +256,12 @@ select:focus {
     font-size: 20px;
     font-weight: 100;
   }
+  .c1,
+.c2{
+  display:none;
 }
 
-@media (max-width: 440px) {
+@media (max-width: 550px) {
   .row {
     flex-direction: column;
     gap: 10px;

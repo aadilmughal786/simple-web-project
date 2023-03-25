@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fancy border</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        min-height: 100vh;
+        flex-wrap: wrap;
+        gap: 50px;
+        margin: 10vh 0;
+        background-color: black;
+      }
+
+      .box {
+        width: 300px;
+        height: 400px;
+        background: linear-gradient(45deg, #00f376 10%, transparent 10%,transparent 50%, #00f376 50%, #00f376 60%,transparent 60%, transparent 100%);
+        background-size: 15px 15px;
+        box-shadow: 0 0 0 10px black, 0 0 0 14px #00f376;
+        filter: hue-rotate(calc(var(--i)*90deg));
+        animation: animate .5s linear infinite;
+      }
+
+      .box::before{
+        content: "";
+        background-color: black;
+        position: absolute;
+        inset: 20px;
+      }
+
+      .box::after{
+        content: "";
+        position: absolute;
+        inset: 30px;
+        border: dashed 3px #00f376;
+      }
+
+      @keyframes animate {
+        0%{
+            background-position: 0;
+        }
+        100%{
+            background-position: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" style="--i: 1"></div>
+    <div class="box" style="--i: 2"></div>
+    <div class="box" style="--i: 3"></div>
+  </body>
+</html>

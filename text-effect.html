@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Effect</title>
+    <style>
+      body {
+        font-family: monospace;
+        color: white;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 3rem;
+        cursor: pointer;
+      }
+
+      i {
+        margin-bottom: 20vh;
+        font-size: 1rem;
+        font-style: normal;
+        color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <i>Mouse over to text to view the effect</i>
+    <h1 data-value="My Name Is Aadil Mugal">My Name Is Aadil Mugal</h1>
+  </body>
+  <script>
+    // Charracters Set
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    // Constants Parameters
+    const ITERATIONS_GAP = 30; // In mili seconds
+    const ITERATIONS_PER_LETTER = 2;
+    const MAX_ITERATIONS = letters.length;
+
+    const text = document.querySelector("h1");
+
+    text.addEventListener("mouseover", (event) => {
+      let iterations = 0;
+      const interval = setInterval(() => {
+        text.innerText = text.innerText
+          .split("")
+          .map((letter, index) => {
+            if (index < iterations) {
+              return text.dataset.value[index];
+            }
+            return letters[Math.floor(Math.random() * MAX_ITERATIONS)];
+          })
+          .join("");
+
+        if (iterations > MAX_ITERATIONS) clearInterval(interval);
+
+        iterations += 1 / ITERATIONS_PER_LETTER;
+      }, ITERATIONS_GAP);
+    });
+  </script>
+</html>
